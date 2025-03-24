@@ -31,6 +31,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'correo_verificado_at',
+        'id_role',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -42,4 +46,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function empresa(){
+        return $this->belongsTo('App\Models\Empresa', 'id_empresa');
+    }
+
+    public function role(){
+        return $this->belongsTo('App\Models\Role', 'id_role');
+    }
 }

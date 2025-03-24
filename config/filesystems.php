@@ -44,6 +44,39 @@ return [
             'throw' => false,
         ],
 
+        'comida' => [
+            'driver' => 'local',
+            'root' => storage_path('app/comida'),
+            'url' => env('APP_URL').'/comida',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+
+        'img_errors' => [
+            'driver' => 'local',
+            'root' => storage_path('app/img_erros'),
+            'url' => env('APP_URL').'/img_erros',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'img_users' => [
+            'driver' => 'local',
+            'root' => storage_path('app/img_users'),
+            'url' => env('APP_URL').'/img_users',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'empresa' => [
+            'driver' => 'local',
+            'root' => storage_path('app/empresa'),
+            'url' => env('APP_URL').'/empresa',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -70,7 +103,10 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+        public_path('comida') => storage_path('app/comida'),
+        public_path('img_errors') => storage_path('app/img_errors'),
+        public_path('img_users') => storage_path('app/img_users'),
+        public_path('empresa') => storage_path('app/empresa'),
     ],
 
 ];

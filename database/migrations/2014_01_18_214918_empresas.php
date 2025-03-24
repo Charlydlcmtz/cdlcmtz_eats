@@ -11,26 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('empresas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('username')->unique();
-            $table->string('apellido_p');
-            $table->string('apellido_m');
+            $table->string('nombre')->unique();
+            $table->string('rfc')->unique();
             $table->string('telefono');
-            $table->string('no_empleado')->nullable();
-            $table->string('img_user')->nullable();
-            $table->unsignedBigInteger('id_empresa')->nullable(); // Relación con empresas
-            $table->unsignedBigInteger('id_role');
             $table->string('correo')->unique();
+            $table->string('icon')->nullable();
+            $table->string('colors')->nullable();
             $table->timestamp('correo_verificado_at')->nullable();
+            $table->unsignedBigInteger('id_role');
             $table->string('password');
             $table->boolean('estatus')->default(true);
-            $table->rememberToken();
             $table->timestamps();
 
-            // Definir clave foránea
-            $table->foreign('id_empresa')->references('id')->on('empresas')->onDelete('set null');
             $table->foreign('id_role')->references('id')->on('roles')->onDelete('cascade');
         });
     }
@@ -40,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('empresas');
     }
 };
